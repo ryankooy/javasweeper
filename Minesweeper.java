@@ -8,14 +8,14 @@ import javax.swing.JOptionPane;
 
 public class Minesweeper extends JFrame {
   private static final long serialVersionUID = 1L;
-  private int width, height;
-  private int difficulty;
-  private Cell[][] cells;
-  private Board board;
-  private JButton reset;
+  private final int width, height;
+  private final int difficulty;
+  private final Cell[][] cells;
+  private final Board board;
+  private final JButton reset;
   private boolean finished;
 
-  public void select(int x, int y) {
+  public void select(final int x, final int y) {
     if (cells[x][y].isFlagged())
       return;
 
@@ -98,7 +98,7 @@ public class Minesweeper extends JFrame {
     }
   }
 
-  public void mark(int x, int y) {
+  public void mark(final int x, final int y) {
     if (cells[x][y].isFlagged())
       cells[x][y].unflag();
     else if (cells[x][y].isCovered())
@@ -117,14 +117,14 @@ public class Minesweeper extends JFrame {
   }
 
   public void reset() {
-    Random random = new Random();
+    final Random random = new Random();
     finished = false;
 
     for (int i = 0; i < width; i++) {
       for (int j = 0; j < height; j++) {
-        Cell c = new Cell;
+        final Cell c = new Cell();
         cells[i][j] = c;
-        int r = random.nextInt(100);
+        final int r = random.nextInt(100);
 
         if (r < difficulty) {
           cells[i][j].setMine();
@@ -200,7 +200,7 @@ public class Minesweeper extends JFrame {
     return finished;
   }
 
-  public Minesweeper(int x, int y, int d) {
+public Minesweeper(final int x, final int y, final int d) {
     width = x;
     height = y;
     difficulty = d;
@@ -217,7 +217,7 @@ public class Minesweeper extends JFrame {
     reset.addActionListener(new Actions(this));
 
     setTitle("MINESWEEPER");
-    setDefaultCloseOperator(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setResizable(false);
     pack();
     setVisible(true);

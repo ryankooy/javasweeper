@@ -6,49 +6,50 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Actions implements ActionListener, MouseListener {
-  private Minesweeper mine;
+  private final Minesweeper mine;
+  int mineCount, flagCount;
 
-  public void mouseEntered(MouseEvent e) {
-
-  }
-
-  public void mouseExited(MouseEvent e) {
+  public void mouseEntered(final MouseEvent e) {
 
   }
 
-  public void mousePressed(MouseEvent e) {
+  public void mouseExited(final MouseEvent e) {
 
   }
 
-  public void mouseReleased(MouseEvent e) {
+  public void mousePressed(final MouseEvent e) {
 
   }
 
-  public Actions(Minesweeper m) {
+  public void mouseReleased(final MouseEvent e) {
+
+  }
+
+  public Actions(final Minesweeper m) {
     mine = m;
   }
 
-  public void actionPerformed(ActionEvent e) {
+  public void actionPerformed(final ActionEvent e) {
     mine.reset();
     mine.refresh();
   }
 
-  public void mouseClicked(MouseEvent e) {
+  public void mouseClicked(final MouseEvent e) {
     if (e.getButton() == 1) {
-      int x = e.getX() / 20;
-      int y = e.getY() / 20;
+      final int x = e.getX() / 20;
+      final int y = e.getY() / 20;
 
       mine.select(x, y);
     }
 
     if (e.getButton() == 2) {
-      int mineCount = 0;
-      int flagCount = 0;
+      mineCount = 0;
+      flagCount = 0;
     }
 
     if (e.getButton() == 3) {
-      int x = e.getX() / 20;
-      int y = e.getY() / 20;
+      final int x = e.getX() / 20;
+      final int y = e.getY() / 20;
 
       mine.mark(x, y);
     }
